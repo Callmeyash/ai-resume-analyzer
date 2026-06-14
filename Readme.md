@@ -30,6 +30,10 @@ AI-powered Resume Analyzer using Gemini AI.
 - Resume Comparison
 - Export Analysis to PDF
 
+## Live Demo:
+
+https://your-app-url.streamlit.app
+
 ## Status
 
 Project under development.
