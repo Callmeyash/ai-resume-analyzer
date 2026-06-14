@@ -32,7 +32,7 @@ AI-powered Resume Analyzer using Gemini AI.
 
 ## Live Demo:
 
-[https://your-app-url.streamlit.app](https://ai-resume-analyzer-0.streamlit.app/)
+(https://ai-resume-analyzer-0.streamlit.app/)](https://ai-resume-analyzer-0.streamlit.app/)
 
 ## Status
 
