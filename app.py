@@ -14,8 +14,9 @@ model = genai.GenerativeModel(
     "models/gemini-2.5-flash"
 )
 
-st.title("AI Resume Analyzer")
-st.write("Upload your resume for analysis")
+with st.sidebar:
+    st.header("AI Resume Analyzer")
+    st.write("Upload a PDF resume and receive AI-powered feedback.")
 
 uploaded_files = st.file_uploader(
     "Upload Resume ⬇️",
@@ -37,18 +38,21 @@ if uploaded_files:
     st.subheader("Extracted Resume Text")
 
     st.text(text[:5000])
-    
-if st.button("Analyze Resume"):
+job_role = st.text_input("Enter Target Role")
+with st.spinner("Analyzing Resume..."):
+    if st.button("Analyze Resume"):
 
         prompt = f"""
-        Analyze this resume.
+        Analyze this resume for the role: {job_role}
 
-        Give:
+        Provide:
         1. Resume Summary
-        2. Top Skills
-        3. Strengths
-        4. Missing Skills
-        5. Improvement Suggestions
+        2. Matching Skills
+        3. Missing Skills
+        4. Skill Gap Analysis
+        5. Projects Needed
+        6. ATS Score
+        7. Resume Score (0-10)
 
         Resume:
         {text}
@@ -62,8 +66,15 @@ if st.button("Analyze Resume"):
 
             st.subheader("AI Analysis")
 
-            st.write(response.text)
+            st.markdown(response.text)
+            st.success("Analysis Complete!")
+            st.download_button(
+            "Download Analysis",
+            response.text,
+            file_name="resume_analysis.txt"
+)
 
         except Exception as e:
 
             st.error(f"Error: {e}")
+
